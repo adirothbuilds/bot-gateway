@@ -1,5 +1,10 @@
 import { OpenAPIRoute } from "chanfana";
-import { WhatsAppMessageSchema, WhatsAppMessageResponseSchema, AppContext } from "../core/types";
+import {
+  WhatsAppMessageSchema,
+  WhatsAppMessageResponseSchema,
+  AppContext,
+  Intent,
+} from "../core/types";
 import { detectIntent } from "../core/intent";
 
 export class WhatsappWebhook extends OpenAPIRoute {
@@ -10,7 +15,7 @@ export class WhatsappWebhook extends OpenAPIRoute {
       body: {
         content: {
           "application/json": {
-            schema: WhatsAppMessageSchema
+            schema: WhatsAppMessageSchema,
           },
         },
       },
@@ -45,7 +50,7 @@ export class WhatsappWebhook extends OpenAPIRoute {
     }
   }
 
-  reply(intent: string, reply: string) {
+  reply(intent: Intent, reply: string) {
     return {
       success: true,
       intent,

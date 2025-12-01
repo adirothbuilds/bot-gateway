@@ -1,9 +1,10 @@
 import type { Context } from "hono";
 import type { Env } from "./env";
 import { z } from "zod";
-import { stat } from "fs";
 
 export type AppContext = Context<{ Bindings: Env }>;
+
+export type Intent = "SCHEDULE" | "CANCEL" | "AVAILABILITY" | "UNKNOWN";
 
 export const HealthCheckResponseSchema = z.object({
   status: z.literal("OK"),

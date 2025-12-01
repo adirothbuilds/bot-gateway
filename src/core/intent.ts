@@ -1,4 +1,6 @@
-export function detectIntent(message: string) {
+import type { Intent } from "./types";
+
+export function detectIntent(message: string): Intent {
   if (!message) return "UNKNOWN";
 
   if (message.includes("תור")) return "SCHEDULE";
