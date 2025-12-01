@@ -165,3 +165,11 @@ dist
 .env*
 !.env.example
 .wrangler/
+
+# local build output
+dist/
+build/
+.bundle/
+
+# vscode settings
+.vscode/
