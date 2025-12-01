@@ -1,6 +1,8 @@
 import { OpenAPIRoute } from "chanfana";
 import { HealthCheckResponseSchema } from "../core/types";
 
+const startedAt = Date.now();
+
 export class HealthCheck extends OpenAPIRoute {
   schema = {
     tags: ["System"],
@@ -10,7 +12,7 @@ export class HealthCheck extends OpenAPIRoute {
         description: "Service is healthy",
         content: {
           "application/json": {
-            schema: HealthCheckResponseSchema
+            schema: HealthCheckResponseSchema,
           },
         },
       },
@@ -20,7 +22,7 @@ export class HealthCheck extends OpenAPIRoute {
   async handle() {
     return {
       status: "OK",
-      uptime: Date.now(),
+      uptime: Date.now() - startedAt,
     };
   }
 }
